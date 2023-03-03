@@ -1,11 +1,24 @@
 import React from "react";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import '../index.css';
 
 class Header extends React.Component {
   render() {
     return (
-      <header>
-        <h1>Travel Bucket</h1>
-      </header>
+      <>
+        <Navbar bg="light" variant="light">
+          <Container>
+            <Navbar.Brand href="#home">Travel Bucket</Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/profile">Profile</Nav.Link>
+              <Nav.Link href="/aboutUs">About Us</Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
+      </>
     )
   }
 }
