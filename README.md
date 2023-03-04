@@ -139,7 +139,7 @@ How will you communicate that it’s time to merge?
 
 ### User stories
 
-1. AS A user I WANT to be able to search for a city name I am interested in visiting/have on my travel bucket list, and see details regarding that city SO THAT I can decide if what the city have to offer is what I like.
+1.    AS A user I WANT to be able to search for a city name I am interested in visiting/have on my travel bucket list, and see details regarding that city SO THAT I can decide if what the city have to offer is what I like.
 
 Feature Tasks:
 ·      Create a search form that will take in the city name after selecting ‘explore’ button
@@ -149,39 +149,39 @@ Feature Tasks:
 Have images of different attractions for the searched city rendered on the page after the user click the explore button
 Have a brief description of the city searched rendered after the explore button is clicked
 AS A user I WANT to be able to save a city SO THAT I can go back a see which cities I am interested in visiting.
-
+ 
 Feature Tasks:
 Create a profile page for the user to be able to store all of the saved city
 Create a save/add button at the bottom so that the user can add the city to their profile
-
-4. AS A user I WANT to be able to update and delete my saved cities SO THAT I can keep my profile updated with my current interest
+ 
+4.    AS A user I WANT to be able to update and delete my saved cities SO THAT I can keep my profile updated with my current interest
 Feature tasks:
 Create a UPDATE functionality that will take in a …..
 Create a DELETE functionality that will delete the added city from the user profile with the press of a button.
-5. AS A user I WANT to be able to see the total number of cities I have saved, the total number of those saved cities I have visited and remaining to visit SO THAT I can make my future traveling plans according to that information.
+5.    AS A user I WANT to be able to see the total number of cities I have saved, the total number of those saved cities I have visited and remaining to visit SO THAT I can make my future traveling plans according to that information.
 Feature tasks:
 Create a function that will count the total number of cities that were added to the user profile and render it in the total number of city section in the user profile.
 Add a checkbox on each city card to check if a city was visited.
 Create a visited functionality that will count the number of cities that receive the ‘visited’ checkbox and render it in the total number of cities visited section in the user profile.
 Create a function to count the number of cities remaining to visit that subtract the number of cities visited from the total number of cities added to the profile and return the sum rendered in the ‘number of cities remaining to visit section’ of the user profile.
-6. AS A user I WANT know of places to stay around the searched city SO THAT I can plan out where would be the best place to stay.
+6.    AS A user I WANT know of places to stay around the searched city SO THAT I can plan out where would be the best place to stay.
 
 Tasks:
 Create a function that retrieve the data from the API to render hotel or places to stay based on the name of the city searched.
 Have the date rendered on the page in a section that is digestible for the user to view.
-
+ 
 AS A user I WANT know where I can go to eat at the searched city (STRETCH GOAL)
 Tasks:
 Find an API that provide data on popular restaurants in an area based on the city name searched.
 Have these restaurants rendered on the page in a digestible way for the user to view.
 AS A user I WANT know what is the average ticket price of the city I searched SO THAT I can better plan my future trip (STRETCH GOAL)
-
+ 
 Tasks:
 Create a functionality that prompt the user to enter their home location to be stored in the profile and use as beginning point to travel from.
 Connect with an API that find out the average ticket price to travel to the search city name, from the user home location.
 Have the price of the top ticket prices rendered on the page
-
-9. AS A user I WANT to be able to write down notes for the specific city I saved on my travel list profile SO THAT I can keep notes of anything to remember for my trip to that city. (STRETCH GOAL)
+ 
+9.    AS A user I WANT to be able to write down notes for the specific city I saved on my travel list profile SO THAT I can keep notes of anything to remember for my trip to that city. (STRETCH GOAL)
 Feature Tasks:
 o  Add a form where the user can write notes and have it be saved on their profile.
 
@@ -194,7 +194,3 @@ o  Add a form where the user can write notes and have it be saved on their profi
 ![Saved page](./src/photos/Saved%20Page.jpeg)
 
 ![Search result](./src/photos/Search%20Results.jpeg)
-
-### Domain Model
-
-![Domain Model](src/photos/Travel-Bucket-Domain-Model.jpeg)
