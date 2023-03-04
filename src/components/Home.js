@@ -1,20 +1,30 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import '../data.json';
+import Data from '../data.json';
+import { Card } from "react-bootstrap";
 
 class Home extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         cityName: [],
+    constructor(props) {
+        super(props);
+        this.state = {
+            displayInfo: false,
+            // location_id: '',
+            // name: '',
+            // description: '',
+            // address: '',
+            // image_url: [],
+            data: Data
+        }
+    }
 
-    //     }
-    // }
-
-    // searchInput = (e) => {
-
-    // }
+    searchInput = (e) => {
+        e.preventDefault();
+        this.setState({
+            // name: cityName,
+            displayInfo: true
+        })
+    }
 
     // handleDisplaySearch = async (e) => {
     //     try {
@@ -25,6 +35,8 @@ class Home extends React.Component {
     //         this.setState({})
     //     }
     // }
+
+
 
     render() {
         return (
@@ -39,8 +51,22 @@ class Home extends React.Component {
                             Please enter city and country.
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit" >Search</Button>
+                    <Button onClick={this.searchInput} type="submit" >Search</Button>
                 </Form>
+
+                <Card style={{ width: '18rem' }}>
+                    {
+                        this.state.data.map((obj, idx) => 
+                        < Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Body>
+                        <Card.Title>{this.state.data.name}</Card.Title>
+                        <Card.Text>
+                            Some quick example text to build on the card title and make up the
+                            bulk of the card's content.
+                        </Card.Text>
+                    </Card.Body>
+                        )}
+                </Card>
             </>
         )
     }
