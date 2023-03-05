@@ -1,29 +1,72 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Data from '../data.json';
-import { Card } from "react-bootstrap";
+import Attractions from './Attractions';
+import Restaurants from './Restaurants';
+import { Modal } from "react-bootstrap";
+import axios from 'axios';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             displayInfo: false,
-            // location_id: '',
-            // name: '',
-            // description: '',
-            // address: '',
-            // image_url: [],
-            data: Data
+            name: '',
+            // cityData: {},
+            attractionData: [],
+            restaurantData: [],
+            errorModal: false,
+
         }
     }
 
     searchInput = (e) => {
-        e.preventDefault();
+        let cityName = e.target.value;
         this.setState({
-            // name: cityName,
-            displayInfo: true
+            name: cityName,
         })
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        this.displayAttractions();
+        this.displayRestaurants();
+        this.setState({
+            displayInfo: true,
+
+        })
+    }
+
+    displayAttractions = async () => {
+        try {
+            let url = `${process.env.REACT_APP_SERVER}/attractions`
+            let attractionsResponse = await axios.get(url)
+            console.log(attractionsResponse.data);
+            this.setState({
+                displayInfo: true,
+                attractionData: attractionsResponse.data,
+            })
+        } catch(error) {
+            this.setState({
+                errorModal: true,
+            })
+        }
+    }
+
+    displayRestaurants = async () => {
+        try {
+            let url = `${process.env.REACT_APP_SERVER}/restaurants`
+            let restaurantsResponse = await axios.get(url)
+            console.log(restaurantsResponse.data);
+            this.setState({
+                displayInfo: true,
+                restaurantData: restaurantsResponse.data,
+            })
+        } catch(error) {
+            this.setState({
+                errorModal: true,
+            })
+        }
     }
 
     // handleDisplaySearch = async (e) => {
@@ -36,37 +79,46 @@ class Home extends React.Component {
     //     }
     // }
 
-
+    closeErrorModal = () => {
+        this.setState({
+            errorModal: false
+        });
+    };
 
     render() {
         return (
             <>
                 <h1>Home Page</h1>
 
-                <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Group>
                         <Form.Label>Search City</Form.Label>
-                        <Form.Control type="text" placeholder="Enter city, country" />
+                        <Form.Control type="text" placeholder="Enter city, country" onChange={this.searchInput} />
                         <Form.Text className="text-muted">
                             Please enter city and country.
                         </Form.Text>
                     </Form.Group>
-                    <Button onClick={this.searchInput} type="submit" >Search</Button>
+                    <Button  type="submit">Search</Button>
                 </Form>
 
-                <Card style={{ width: '18rem' }}>
-                    {
-                        this.state.data.map((obj, idx) => 
-                        < Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>{this.state.data.name}</Card.Title>
-                        <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
-                        </Card.Text>
-                    </Card.Body>
-                        )}
-                </Card>
+                {this.state.displayInfo &&
+                <>
+                <Attractions attractionData={this.state.attractionData}/>
+                <Restaurants restaurantData={this.state.restaurantData}/>
+                </>
+                };
+
+                <Modal
+                    show={this.state.errorModal}
+                    onHide={this.closeErrorModal}
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Error</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>You've entered an invalid response. Please try again.</p>
+                    </Modal.Body>
+                </Modal>
             </>
         )
     }
