@@ -1,12 +1,15 @@
-body {
-  /* background: linear-gradient(0deg, rgba(122,183,236,1) 0%, rgba(217,237,238,1) 100%); */
-  }
-  
+
   .about-us {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    text-align: center ;
+  }
+  .headerAbout{
+    text-align: center ;
+    font-size: xxx-large;
+    margin-top: 36px;
   }
   
   .about-us h1 {
