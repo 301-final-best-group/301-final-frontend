@@ -1,12 +1,15 @@
-body {
-    background-image: linear-gradient(to top, #051937, #004D7A, #008793, #00BF72, #A8EB12);
-  }
-  
+
   .about-us {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    text-align: center ;
+  }
+  .headerAbout{
+    text-align: center ;
+    font-size: xxx-large;
+    margin-top: 36px;
   }
   
   .about-us h1 {
