@@ -1,14 +1,16 @@
 import React from "react";
+import '../results.css';
+import { Card } from "react-bootstrap";
 
 class Restaurant extends React.Component {
     render() {
         return (
-            <div>
-                <h3>{this.props.name}</h3>
-                <p>{this.props.address}</p>
-                <img src={this.props.images} alt={this.props.name} />
-                <p>{this.props.description}</p>
-            </div>
+            <Card className="card">
+                <Card.Title>{this.props.name}</Card.Title>
+                <Card.Text>{this.props.address}</Card.Text>
+                <Card.Img src={this.props.images} alt={this.props.name} />
+                <Card.Text>{this.props.description}</Card.Text>
+            </Card>
         )
     }
 };

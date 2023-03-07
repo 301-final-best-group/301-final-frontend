@@ -1,4 +1,5 @@
 import React from "react";
+import '../home.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Attractions from './Attractions';
@@ -39,14 +40,14 @@ class Home extends React.Component {
 
     displayAttractions = async () => {
         try {
-            let url = `${process.env.REACT_APP_SERVER}/attractions`
-            let attractionsResponse = await axios.get(url)
+            let url = `${process.env.REACT_APP_SERVER}/attractions`;
+            let attractionsResponse = await axios.get(url);
             console.log(attractionsResponse.data);
             this.setState({
                 displayInfo: true,
                 attractionData: attractionsResponse.data,
             })
-        } catch(error) {
+        } catch (error) {
             this.setState({
                 errorModal: true,
             })
@@ -55,14 +56,14 @@ class Home extends React.Component {
 
     displayRestaurants = async () => {
         try {
-            let url = `${process.env.REACT_APP_SERVER}/restaurants`
-            let restaurantsResponse = await axios.get(url)
+            let url = `${process.env.REACT_APP_SERVER}/restaurants`;
+            let restaurantsResponse = await axios.get(url);
             console.log(restaurantsResponse.data);
             this.setState({
                 displayInfo: true,
                 restaurantData: restaurantsResponse.data,
             })
-        } catch(error) {
+        } catch (error) {
             this.setState({
                 errorModal: true,
             })
@@ -88,25 +89,23 @@ class Home extends React.Component {
     render() {
         return (
             <>
-                <h1>Home Page</h1>
-
-                <Form onSubmit={this.handleSubmit}>
+                <Form className="searchForm" onSubmit={this.handleSubmit}>
                     <Form.Group>
-                        <Form.Label>Search City</Form.Label>
+                        <Form.Label>Search City:</Form.Label>
                         <Form.Control type="text" placeholder="Enter city, country" onChange={this.searchInput} />
                         <Form.Text className="text-muted">
-                            Please enter city and country.
+                            Please enter name of city.
                         </Form.Text>
                     </Form.Group>
-                    <Button  type="submit">Search</Button>
+                    <Button type="submit">Search</Button>
                 </Form>
 
                 {this.state.displayInfo &&
-                <>
-                <Attractions attractionData={this.state.attractionData}/>
-                <Restaurants restaurantData={this.state.restaurantData}/>
-                </>
-                };
+                    <>
+                        <Attractions attractionData={this.state.attractionData} />
+                        <Restaurants restaurantData={this.state.restaurantData} />
+                    </>
+                }
 
                 <Modal
                     show={this.state.errorModal}
