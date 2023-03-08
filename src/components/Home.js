@@ -40,7 +40,9 @@ class Home extends React.Component {
 
     displayAttractions = async () => {
         try {
-            let url = `${process.env.REACT_APP_SERVER}/attractions`;
+            // let url = `${process.env.REACT_APP_SERVER}/attractions?searchQuery=${this.state.name}`;
+            let url = `http://localhost:3001/attractions?searchQuery=${this.state.name}`;
+            console.log(url);
             let attractionsResponse = await axios.get(url);
             console.log(attractionsResponse.data);
             this.setState({
@@ -56,7 +58,9 @@ class Home extends React.Component {
 
     displayRestaurants = async () => {
         try {
-            let url = `${process.env.REACT_APP_SERVER}/restaurants`;
+            // let url = `${process.env.REACT_APP_SERVER}/restaurants?searchQuery=${this.state.name}`;
+            let url = `http://localhost:3001/restaurants?searchQuery=${this.state.name}`;
+            console.log(url);
             let restaurantsResponse = await axios.get(url);
             console.log(restaurantsResponse.data);
             this.setState({
@@ -69,6 +73,40 @@ class Home extends React.Component {
             })
         }
     }
+
+    postPlaces = async (newPlaces) => {
+        try {
+            //   if (this.props.auth0.isAuthenticated) {
+            //     const res = await this.props.auth0.getIdTokenClaims()
+            //     const jwt = res.__raw;
+            //     const config = {
+            //       headers: { “Authorization”: `Bearer ${jwt}` },
+            //     }
+            let url = `${process.env.REACT_APP_SERVER}/places`;
+            await axios.post(url, newPlaces)
+            // const response = await axios.post(url, newBook, config)
+            // this.setState({ places: [...this.state.places, response.data] })
+            //   }
+        }
+        catch (err) { console.error(err) }
+    }
+
+    // deleteBook = async (_id) => {
+    //     try {
+    //       if (this.props.auth0.isAuthenticated) {
+    //         const res = await this.props.auth0.getIdTokenClaims()
+    //         const jwt = res.__raw;
+    //         const config = {
+    //           headers: { “Authorization”: `Bearer ${jwt}` },
+    //         }
+    //       console.log(“DELETE REQUEST RECEIVED”)
+    //       let url = `${process.env.REACT_APP_SERVER}/books/${_id}`;
+    //       await axios.delete(url, config);
+    //       let updatedBooks = this.state.books.filter(book => book._id !== _id);
+    //       this.setState({ books: updatedBooks });
+    //     }}
+    //     catch (err) { console.error(err) }
+    //   }
 
     // handleDisplaySearch = async (e) => {
     //     try {
@@ -102,8 +140,12 @@ class Home extends React.Component {
 
                 {this.state.displayInfo &&
                     <>
-                        <Attractions attractionData={this.state.attractionData} />
-                        <Restaurants restaurantData={this.state.restaurantData} />
+                        <Attractions
+                            attractionData={this.state.attractionData}
+                            postPlaces={this.postPlaces} />
+                        <Restaurants
+                            restaurantData={this.state.restaurantData}
+                            postPlaces={this.postPlaces} />
                     </>
                 }
 
