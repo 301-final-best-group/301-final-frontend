@@ -1,65 +1,68 @@
+body {
+  background: linear-gradient(0deg, rgba(122, 183, 236, 1) 0%, rgba(217, 237, 238, 1) 100%);
+}
 
-  .about-us {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center ;
-  }
-  .headerAbout{
-    text-align: center ;
-    font-size: xxx-large;
-    margin-top: 36px;
-  }
-  
-  .about-us h1 {
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .team-member {
-    width: 100%;
-    max-width: 600px;
-    margin: 2rem;
-    padding: 2rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-  
-  .team-member h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
-  }
-  
-  .team-member img {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    height: auto;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .team-member .img-left {
-    float: left;
-    margin-right: 1rem;
-  }
-  
-  .team-member .img-right {
-    float: right;
-    margin-left: 1rem;
-  }
-  
-  .team-member p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-top: 1.5rem;
-    text-align: justify;
-  }
-  
+.about-us {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.headerAbout {
+  text-align: center;
+  font-size: xxx-large;
+  margin-top: 36px;
+}
+
+.about-us h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.team-member {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem;
+  padding: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.team-member h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.team-member img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.team-member .img-left {
+  float: left;
+  margin-right: 1rem;
+}
+
+.team-member .img-right {
+  float: right;
+  margin-left: 1rem;
+}
+
+.team-member p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-top: 1.5rem;
+  text-align: justify;
+}
