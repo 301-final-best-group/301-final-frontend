@@ -1,4 +1,5 @@
 .card {
+    font-family: 'Ubuntu';
     height: 400px !important;
     width: 300px !important;
     margin: 10px;
@@ -8,14 +9,19 @@
     align-items: center;
 }
 
+.card .cardImg {
+    height: 70% !important;
+}
+
 .card .cardAddress {
     font-size: 10px;
 }
 
 h2 {
     font-family: 'Unbounded';
-    margin-left: auto !important;
-    margin-right: auto !important;
+    font-size: 30px !important;
+    margin-left: 2rem !important;
+    margin-top: 2rem !important;
 }
 
 .container {

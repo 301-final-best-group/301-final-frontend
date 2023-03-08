@@ -11,6 +11,7 @@ class AboutUs extends React.Component {
     render() {
         return (
                 <>
+                <div className="aboutUsBg">               
                 <h2 className="headerAbout" >About Us</h2>
             <section className="about-us">
                 
@@ -35,6 +36,7 @@ class AboutUs extends React.Component {
                     <p>Hi, I'm Yurii, and I'm transitioning from my previous career as a cable tech to become a full-stack developer. As a beginner in full-stack development, I'm eager to learn and gain hands-on experience in both front-end and back-end development. My experience in customer service and communication has taught me the importance of building relationships with clients and collaborating with team members to deliver quality work. I'm excited about the opportunities and challenges that lie ahead in this field, and I'm determined to work hard and continuously improve my skills to become a successful full-stack developer. I am always eager to expand my knowledge and skills.</p>
                 </div>
             </section>
+            </div>
                 </>
 
         )
