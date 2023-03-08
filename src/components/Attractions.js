@@ -8,7 +8,7 @@ class Attractions extends React.Component {
     render() {
         return (
             <>
-                <h2>Attraction</h2>
+                <h2>Attractions</h2>
                 <Container className="container">
                     <div className="cardRow">
                         {this.props.attractionData.map((attraction, idx) => {
@@ -17,7 +17,7 @@ class Attractions extends React.Component {
                                     key={idx}
                                     name={attraction.name}
                                     address={attraction.address}
-                                    decription={attraction.description}
+                                    description={attraction.description}
                                     images={attraction.images[0]}
                                     attraction={attraction}
                                     postPlaces={this.props.postPlaces}

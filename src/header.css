@@ -1,11 +1,9 @@
 .navBar {
-    display: flex;
-    justify-content: space-between !important;
-    background: #7ab7ec !important;
-
+    background-color: #7ab7ec !important;
 }
 
 .navHeader {
+    color: #2e6799 !important;
     margin-left: 2rem !important;
     font-family: 'Unbounded';
     font-weight: bold;
@@ -19,4 +17,5 @@
 
 .navItem {
     margin-right: 3rem;
+    font-family: 'Ubuntu';
 }

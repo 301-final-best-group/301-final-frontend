@@ -17,7 +17,7 @@ class Restaurants extends React.Component {
                                     key={idx}
                                     name={restaurant.name}
                                     address={restaurant.address}
-                                    decription={restaurant.description}
+                                    description={restaurant.description}
                                     images={restaurant.images[0]}
                                     restaurant={restaurant}
                                     postPlaces={this.props.postPlaces}

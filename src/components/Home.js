@@ -128,14 +128,14 @@ class Home extends React.Component {
         return (
             <>
                 <Form className="searchForm" onSubmit={this.handleSubmit}>
-                    <Form.Group>
-                        <Form.Label>Search City:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter location" onChange={this.searchInput} />
-                        <Form.Text className="text-muted">
+                    <Form.Group className="formItems" >
+                        <Form.Label className="formHeader" >Search City:</Form.Label>
+                        <Form.Control className="searchBar" type="text" placeholder="Enter location" onChange={this.searchInput} />
+                        <Form.Text className="formText">
                             Please enter the name of desired location.
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit">Search</Button>
+                    <Button className="formButton" type="submit">Search</Button>
                 </Form>
 
                 {this.state.displayInfo &&
