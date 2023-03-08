@@ -19,7 +19,8 @@ class Attractions extends React.Component {
                                     address={attraction.address}
                                     decription={attraction.description}
                                     images={attraction.images[0]}
-
+                                    attraction={attraction}
+                                    postPlaces={this.props.postPlaces}
                                 />
                             )
                         })}

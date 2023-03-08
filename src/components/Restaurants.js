@@ -19,6 +19,8 @@ class Restaurants extends React.Component {
                                     address={restaurant.address}
                                     decription={restaurant.description}
                                     images={restaurant.images[0]}
+                                    restaurant={restaurant}
+                                    postPlaces={this.props.postPlaces}
 
                                 />
                             )
