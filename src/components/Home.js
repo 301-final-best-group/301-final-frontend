@@ -17,7 +17,8 @@ class Home extends React.Component {
             attractionData: [],
             restaurantData: [],
             errorModal: false,
-            places: {}
+            places: {},
+            // showDescriptionModal: false,
         }
     }
 

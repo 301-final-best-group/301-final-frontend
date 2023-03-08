@@ -1,13 +1,16 @@
 import React from "react";
 import axios from 'axios';
 import {Card, Container, Row, Button } from "react-bootstrap";
+import UpdateModal from "./UpdateModal";
 
 class Profile extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            places: {}
+            places: {},
+            showUpdateModal: false,
+            placeToUpdate: {}
         }
     }
 
@@ -35,7 +38,27 @@ class Profile extends React.Component {
         }
     catch(err) { console.error(err) }
 }
+    putPlace = async (updatedPlace) => {
+        try {
+            let url = `${process.env.REACT_APP_SERVER}/places/${updatedPlace._id}`;
+            await axios.put(url, updatedPlace);
+            const updatedPlaceArr = this.state.Places.map(oldPlace => updatedPlace._id === oldPlace._id ? updatedPlace : oldPlace);
+            this.setState({ places: updatedPlaceArr });
+        }
+        catch (err) { console.error(err); }
+    }
 
+    handleShowUpdateModal = (place) => {
+        console.log(place)
+        this.setState({ showUpdateModal: true, placeToUpdate: place })
+    
+      }
+    
+      handleCloseUpdateModal = () => {
+        console.log('CLOSE UPDATE MODAL FIRED')
+        this.setState({ showUpdateModal: false })
+    
+      }
 
 
     render() {
@@ -44,9 +67,6 @@ class Profile extends React.Component {
                 <h2>Your places to visit</h2>
                 {this.state.places.length > 0 ? (
                     <>
-                       
-
-
                         <Container >
                             <Row>
                             {this.state.places.map((place) =>
@@ -65,13 +85,19 @@ class Profile extends React.Component {
                                     {/* <Card.Text>{place.description}</Card.Text> */}
                                     <div style={{display: "flex"}}>
                                     <Button onClick={() => this.deletePlace(place._id)}variant="danger"  style={{marginRight: "10px"}}>NO GO</Button>
-                                    <Button variant='success' style={{marginLeft: "10px"}}> Add Notes</Button>
+                                    <Button onClick={() => this.handleShowUpdateModal(place)}variant='success' style={{marginLeft: "10px"}}> Add Notes</Button>
                                     </div>
                                     </Card>
                                 )}
                             </Row>
                         </Container>
 
+                        <UpdateModal
+                            placeToUpdate={this.state.placeToUpdate}
+                            handleCloseUpdateModal={this.handleCloseUpdateModal}
+                            showUpdateModal={this.state.showUpdateModal}
+                            putPlace={this.putPlace}
+                        />
 
 
                     </>
