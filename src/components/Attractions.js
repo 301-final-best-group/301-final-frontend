@@ -1,6 +1,6 @@
 import React from "react";
 import '../results.css';
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Attraction from './Attraction';
 
 
@@ -10,7 +10,7 @@ class Attractions extends React.Component {
             <>
                 <h2>Attraction</h2>
                 <Container className="container">
-                    <Row xs={2} sm={3} md={5}>
+                    <div className="cardRow">
                         {this.props.attractionData.map((attraction, idx) => {
                             return (
                                 <Attraction
@@ -23,7 +23,7 @@ class Attractions extends React.Component {
                                 />
                             )
                         })}
-                    </Row>
+                    </div>
                 </Container>
 
             </>

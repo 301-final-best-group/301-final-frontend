@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import '../results.css';
+import { Container } from "react-bootstrap";
 import Restaurant from './Restaurant';
 
 
@@ -9,7 +10,7 @@ class Restaurants extends React.Component {
             <>
                 <h2>Restaurants</h2>
                 <Container>
-                    <Row xs={2} sm={3} md={5}>
+                    <div className="cardRow">
                         {this.props.restaurantData.map((restaurant, idx) => {
                             return (
                                 <Restaurant
@@ -22,7 +23,7 @@ class Restaurants extends React.Component {
                                 />
                             )
                         })}
-                    </Row>
+                    </div>
                 </Container>
 
             </>
