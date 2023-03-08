@@ -18,7 +18,7 @@ class Restaurants extends React.Component {
                                     name={restaurant.name}
                                     address={restaurant.address}
                                     decription={restaurant.description}
-                                    images={restaurant.images}
+                                    images={restaurant.images[0]}
 
                                 />
                             )

@@ -92,9 +92,9 @@ class Home extends React.Component {
                 <Form className="searchForm" onSubmit={this.handleSubmit}>
                     <Form.Group>
                         <Form.Label>Search City:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter city, country" onChange={this.searchInput} />
+                        <Form.Control type="text" placeholder="Enter location" onChange={this.searchInput} />
                         <Form.Text className="text-muted">
-                            Please enter name of city.
+                            Please enter the name of desired location.
                         </Form.Text>
                     </Form.Group>
                     <Button type="submit">Search</Button>
