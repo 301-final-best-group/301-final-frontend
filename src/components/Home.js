@@ -17,7 +17,7 @@ class Home extends React.Component {
             attractionData: [],
             restaurantData: [],
             errorModal: false,
-
+            places: {}
         }
     }
 
@@ -91,32 +91,7 @@ class Home extends React.Component {
         catch (err) { console.error(err) }
     }
 
-    // deleteBook = async (_id) => {
-    //     try {
-    //       if (this.props.auth0.isAuthenticated) {
-    //         const res = await this.props.auth0.getIdTokenClaims()
-    //         const jwt = res.__raw;
-    //         const config = {
-    //           headers: { “Authorization”: `Bearer ${jwt}` },
-    //         }
-    //       console.log(“DELETE REQUEST RECEIVED”)
-    //       let url = `${process.env.REACT_APP_SERVER}/books/${_id}`;
-    //       await axios.delete(url, config);
-    //       let updatedBooks = this.state.books.filter(book => book._id !== _id);
-    //       this.setState({ books: updatedBooks });
-    //     }}
-    //     catch (err) { console.error(err) }
-    //   }
-
-    // handleDisplaySearch = async (e) => {
-    //     try {
-    //         let response = await axios.get(`${process.env.REACT_APP_SERVER}`);
-    //         console.log(response.data);
-    //     }
-    //     catch (error) {
-    //         this.setState({})
-    //     }
-    // }
+    
 
     closeErrorModal = () => {
         this.setState({
