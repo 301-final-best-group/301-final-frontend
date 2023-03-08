@@ -1,0 +1,22 @@
+.navBar {
+    display: flex;
+    justify-content: space-between !important;
+    background: #7ab7ec !important;
+
+}
+
+.navHeader {
+    margin-left: 2rem !important;
+    font-family: 'Unbounded';
+    font-weight: bold;
+    font-size: 30px !important;
+}
+
+.navLink {
+    display: flex;
+    justify-content: flex-end !important;
+}
+
+.navItem {
+    margin-right: 3rem;
+}
