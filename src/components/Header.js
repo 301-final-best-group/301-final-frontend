@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 class Header extends React.Component {
   render() {
     return (
-      <Navbar variant="light" className="navbar">
+      <Navbar bg="" variant="light" className="navbar">
         <Navbar.Brand className="navHeader">Travel Bucket</Navbar.Brand>
         <Container className='navLink'>
           <NavItem className='navItem'><Link to="/" className="nav-link">Home</Link></NavItem>

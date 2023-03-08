@@ -38,3 +38,9 @@ h2 {
     width: fit-content;
     height: fit-content;
 }
+
+.addButton {
+    background-color: #5ca6eb !important;
+    border: none !important;
+    border-radius: 5px;
+}
