@@ -9,7 +9,7 @@ class Restaurants extends React.Component {
         return (
             <>
                 <h2>Restaurants</h2>
-                <Container>
+                <Container className="containerBox">
                     <div className="cardRow">
                         {this.props.restaurantData.map((restaurant, idx) => {
                             return (

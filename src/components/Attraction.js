@@ -10,7 +10,7 @@ class Attraction extends React.Component {
                 <Card.Title className="cardTitle">{this.props.name}</Card.Title>
                 <Card.Text className="cardAddress" >{this.props.address}</Card.Text>
                 {/* <Card.Text>{this.props.description}</Card.Text> */}
-                <Button className="addButton" onClick={() => this.props.postPlaces(this.props.attraction)}>Add</Button>
+                <Button className="addButton" onClick={() => this.props.postPlaces(this.props.attraction)}>Add to My Bucket</Button>
 
             </Card>
         )

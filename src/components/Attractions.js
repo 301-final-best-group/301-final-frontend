@@ -9,7 +9,7 @@ class Attractions extends React.Component {
         return (
             <>
                 <h2>Attractions</h2>
-                <Container className="container">
+                <Container className="containerBox">
                     <div className="cardRow">
                         {this.props.attractionData.map((attraction, idx) => {
                             return (

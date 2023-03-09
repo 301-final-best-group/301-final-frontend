@@ -13,6 +13,10 @@
     height: 70% !important;
 }
 
+.card .cardTitle {
+    font-weight: bold;
+}
+
 .card .cardAddress {
     font-size: 10px;
 }
@@ -20,11 +24,11 @@
 h2 {
     font-family: 'Unbounded';
     font-size: 30px !important;
-    margin-left: 2rem !important;
     margin-top: 2rem !important;
+    text-align: center;
 }
 
-.container {
+.containerBox {
     height: auto;
     padding: 1rem !important;
     margin: 1rem !important;
@@ -40,7 +44,18 @@ h2 {
 }
 
 .addButton {
+    color: white !important;
     background-color: #5ca6eb !important;
+    /* box-shadow: 2px 2px #588ec1; */
+    /* border: 2px solid #5ca6eb !important; */
     border: none !important;
-    border-radius: 5px;
+}
+
+.addButton:hover {
+    background-color: #4075a7 !important;
+}
+
+.addButton:active {
+    transform: translateY(2px);
+    box-shadow: 0px;
 }

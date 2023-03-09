@@ -1,0 +1,95 @@
+.profileBg {
+    padding: 1rem;
+    /* background: linear-gradient(0deg, rgba(122, 183, 236, 1) 0%, rgba(217, 237, 238, 1) 100%); */
+}
+
+h2 {
+    font-family: 'Unbounded';
+    font-size: 30px !important;
+    text-align: center;
+    margin-left: 2rem !important;
+    margin-top: 2rem !important;
+}
+
+p {
+    font-family: 'Ubuntu';
+}
+
+
+.profileCard {
+    font-family: 'Ubuntu';
+    height: 450px !important;
+    width: 300px !important;
+    margin: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileCard .profileImg {
+    height: 65% !important;
+}
+
+.profileCard .profileTitle {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.profileCard .notes {
+    /* background-color: aliceblue;
+    border-radius: 3px; */
+    /* border:2px solid blue !important; */
+    color: rgb(148, 148, 148);
+    font-weight: none !important;
+    margin: 3px;
+    padding: 3px;
+    height: 70px !important;
+    overflow: scroll;
+}
+
+.notes::-webkit-scrollbar {
+    /* display: none; */
+    width: 0px;
+    height: 0px;
+    background: transparent;
+}
+
+/* .profileCard .profileButtons {
+   margin-bottom: 0px !important;
+} */
+
+.updateButton {
+    color: white !important;
+    background-color: rgb(71, 167, 137) !important;
+    /* box-shadow: 2px 2px #588ec1; */
+    /* border: 2px solid #5ca6eb !important; */
+    border: none !important;
+}
+
+.updateButton:hover {
+    background-color: rgb(38, 130, 101) !important;
+}
+
+.updateButton:active {
+    transform: translateY(2px);
+    box-shadow: 0px;
+}
+
+.deleteButton {
+    color: white !important;
+    background-color: rgb(240, 86, 86) !important;
+    /* box-shadow: 2px 2px #588ec1; */
+    /* border: 2px solid #5ca6eb !important; */
+    border: none !important;
+}
+
+.deleteButton:hover {
+    background-color: rgb(181, 68, 68) !important;
+}
+
+.deleteButton:active {
+    transform: translateY(2px);
+    box-shadow: 0px;
+}
