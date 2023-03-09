@@ -3,10 +3,9 @@ import React from 'react';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import AboutUs from './components/AboutUs';
-import './index.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 import {
   BrowserRouter as Router,
   Routes,
