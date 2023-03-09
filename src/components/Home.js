@@ -137,11 +137,11 @@ class Home extends React.Component {
 
                         {this.state.attractionData.length>0? <Attractions
                             attractionData={this.state.attractionData}
-                            postPlaces={this.postPlaces} />:<p> Loading... </p>}
+                            postPlaces={this.postPlaces} />:<h2> Loading... </h2>}
                         {this.state.restaurantData.length>0?<Restaurants
                         
                             restaurantData={this.state.restaurantData}
-                            postPlaces={this.postPlaces} />:<p> Loading... </p>}
+                            postPlaces={this.postPlaces} />:<h2>  </h2>}
                     </>
                 }
 
