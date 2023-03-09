@@ -31,13 +31,13 @@ body {
     font-weight: 800;
     /* margin-left:5px; */
     text-align: center !important;
-    text-shadow: 1px 1px 2px gray;
+    /* text-shadow: 1px 1px 2px gray; */
 }
 
 .formItems .searchBar {
     border-radius: 50px 0px 0px 50px;
     height: 40px;
-    box-shadow: 0 5px 2px -2px rgb(139, 139, 139);
+    /* box-shadow: 0 5px 2px -2px rgb(139, 139, 139); */
 }
 
 
@@ -45,7 +45,7 @@ body {
     font-size: 16px !important;
     color: white !important;
     margin-left: 10px;
-    text-shadow: 1px 1px 2px #457b9d;
+    /* text-shadow: 1px 1px 2px #457b9d; */
 }
 
 .formButton {
@@ -54,5 +54,9 @@ body {
     margin-top: 1.3rem;
     height: 40px;
     border-radius: 0px 50px 50px 0px !important;
-    box-shadow: 0 5px 2px -2px rgb(139, 139, 139);
+    /* box-shadow: 0 5px 2px -2px rgb(139, 139, 139); */
+}
+
+.formButton:hover {
+    background-color: #4075a7 !important;
 }

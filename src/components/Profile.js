@@ -1,4 +1,5 @@
 import React from "react";
+import '../profile.css';
 import axios from 'axios';
 import { Card, Container, Row, Button } from "react-bootstrap";
 import UpdateModal from "./UpdateModal";
@@ -70,8 +71,8 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <>
-                <h2>Your places to visit</h2>
+            <div className="profileBg">
+                <h2>Your Bucketlist:</h2>
                 {this.state.places.length > 0 ? (
                     <>
                         <Container >
@@ -80,17 +81,18 @@ class Profile extends React.Component {
                                     <Card
                                         key={place._id}
                                         id="card"
-                                        style={{ width: '18rem', height: '30rem' }}>
+                                        className="profileCard"
+                                    >
                                         <Card.Img
-                                            style={{ height: '18rem' }}
+                                            className="profileImg"
                                             src={place.images[0]}
                                             alt={place.name}
                                         />
-                                        <Card.Title as='h2'>{place.name}</Card.Title>
-                                        <Card.Text>{place.notes}</Card.Text>
-                                        <div style={{ display: "flex" }}>
-                                            <Button onClick={() => this.deletePlace(place._id)} variant="danger" style={{ marginRight: "10px" }}>NO GO</Button>
-                                            <Button onClick={() => this.handleShowUpdateModal(place)} variant='success' style={{ marginLeft: "10px" }}> Add Notes</Button>
+                                        <Card.Title className="profileTitle" >{place.name}</Card.Title>
+                                        <Card.Text className="notes" >{place.notes}</Card.Text>
+                                        <div className="profileButtons" style={{ display: "flex" }}>
+                                            <Button onClick={() => this.deletePlace(place._id)} className="deleteButton" style={{ marginRight: "10px" }}>NO GO</Button>
+                                            <Button onClick={() => this.handleShowUpdateModal(place)} className="updateButton" style={{ marginLeft: "10px" }}> Add Notes</Button>
                                         </div>
                                     </Card>
                                 )}
@@ -108,9 +110,9 @@ class Profile extends React.Component {
                     </>
 
                 ) : (
-                    <h2>Please search for places to visit</h2>
+                    <p>Please search for places to visit</p>
                 )}
-            </>
+            </div>
 
 
         )
