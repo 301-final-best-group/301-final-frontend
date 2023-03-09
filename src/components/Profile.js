@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import {Card, Container, Row, Button } from "react-bootstrap";
+import { Card, Container, Row, Button } from "react-bootstrap";
 import UpdateModal from "./UpdateModal";
 
 class Profile extends React.Component {
@@ -36,14 +36,21 @@ class Profile extends React.Component {
             let updatedPlaces = this.state.places.filter(place => place._id !== _id);
             this.setState({ places: updatedPlaces });
         }
-    catch(err) { console.error(err) }
-}
+        catch (err) { console.error(err) }
+    }
     putPlace = async (updatedPlace) => {
         try {
             let url = `${process.env.REACT_APP_SERVER}/places/${updatedPlace._id}`;
             await axios.put(url, updatedPlace);
-            const updatedPlaceArr = this.state.Places.map(oldPlace => updatedPlace._id === oldPlace._id ? updatedPlace : oldPlace);
-            this.setState({ places: updatedPlaceArr });
+            console.log(this.state.places)
+            const newPlaces = []
+            this.state.places.forEach(place => {
+                if (place._id === updatedPlace._id) {
+                    place.notes = updatedPlace.notes
+                }
+                newPlaces.push(place)
+            });
+            this.setState({ places: newPlaces })
         }
         catch (err) { console.error(err); }
     }
@@ -51,14 +58,14 @@ class Profile extends React.Component {
     handleShowUpdateModal = (place) => {
         console.log(place)
         this.setState({ showUpdateModal: true, placeToUpdate: place })
-    
-      }
-    
-      handleCloseUpdateModal = () => {
+
+    }
+
+    handleCloseUpdateModal = () => {
         console.log('CLOSE UPDATE MODAL FIRED')
         this.setState({ showUpdateModal: false })
-    
-      }
+
+    }
 
 
     render() {
@@ -69,24 +76,22 @@ class Profile extends React.Component {
                     <>
                         <Container >
                             <Row>
-                            {this.state.places.map((place) =>
-                                    <Card 
-                                    key={place._id}
-                                    id="card" 
-                                    style={{ width: '18rem', height: '30rem' }}>
+                                {this.state.places.map((place) =>
+                                    <Card
+                                        key={place._id}
+                                        id="card"
+                                        style={{ width: '18rem', height: '30rem' }}>
                                         <Card.Img
                                             style={{ height: '18rem' }}
                                             src={place.images[0]}
                                             alt={place.name}
-                                            // onClick={this.handleModalWindow}
                                         />
-                                    <Card.Title as='h2'>{place.name}</Card.Title>
-                                    <Card.Text>{place.address}</Card.Text>
-                                    {/* <Card.Text>{place.description}</Card.Text> */}
-                                    <div style={{display: "flex"}}>
-                                    <Button onClick={() => this.deletePlace(place._id)}variant="danger"  style={{marginRight: "10px"}}>NO GO</Button>
-                                    <Button onClick={() => this.handleShowUpdateModal(place)}variant='success' style={{marginLeft: "10px"}}> Add Notes</Button>
-                                    </div>
+                                        <Card.Title as='h2'>{place.name}</Card.Title>
+                                        <Card.Text>{place.notes}</Card.Text>
+                                        <div style={{ display: "flex" }}>
+                                            <Button onClick={() => this.deletePlace(place._id)} variant="danger" style={{ marginRight: "10px" }}>NO GO</Button>
+                                            <Button onClick={() => this.handleShowUpdateModal(place)} variant='success' style={{ marginLeft: "10px" }}> Add Notes</Button>
+                                        </div>
                                     </Card>
                                 )}
                             </Row>
@@ -114,14 +119,14 @@ class Profile extends React.Component {
 
 export default Profile;
   //<Carousel>
- //   {this.state.places.map(place => (
-   //     <Carousel.Item key={place._id}>
-    //        <img className="placeImg" src={place.images[0]} />
-    //       <Carousel.Caption>
-   //             <h1>{place.name}</h1>
-   //             <p>{place.address}</p>
+  //   {this.state.places.map(place => (
+  //     <Carousel.Item key={place._id}>
+  //        <img className="placeImg" src={place.images[0]} />
+  //       <Carousel.Caption>
+  //             <h1>{place.name}</h1>
+  //             <p>{place.address}</p>
   //              {/* <p>{place.description}</p> */}
-   //         </Carousel.Caption>
-   //     </Carousel.Item>
+  //         </Carousel.Caption>
+  //     </Carousel.Item>
   //  ))}
   //</Carousel>
