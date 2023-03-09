@@ -6,6 +6,9 @@ import Attractions from './Attractions';
 import Restaurants from './Restaurants';
 import { Modal } from "react-bootstrap";
 import axios from 'axios';
+import { withAuth0 } from '@auth0/auth0-react';
+
+
 
 class Home extends React.Component {
     constructor(props) {
@@ -41,15 +44,21 @@ class Home extends React.Component {
 
     displayAttractions = async () => {
         try {
-            // let url = `${process.env.REACT_APP_SERVER}/attractions?searchQuery=${this.state.name}`;
-            let url = `http://localhost:3001/attractions?searchQuery=${this.state.name}`;
+            if (this.props.auth0.isAuthenticated) {
+                const res = await this.props.auth0.getIdTokenClaims()
+                const jwt = res.__raw;
+                const config = {
+                  headers: { "Authorization": `Bearer ${jwt}` },
+                }
+            let url = `${process.env.REACT_APP_SERVER}/attractions?searchQuery=${this.state.name}`;
+            // let url = `http://localhost:3001/attractions?searchQuery=${this.state.name}`;
             console.log(url);
-            let attractionsResponse = await axios.get(url);
+            let attractionsResponse = await axios.get(url, config);
             console.log(attractionsResponse.data);
             this.setState({
                 displayInfo: true,
                 attractionData: attractionsResponse.data,
-            })
+            })}
         } catch (error) {
             this.setState({
                 errorModal: true,
@@ -58,16 +67,24 @@ class Home extends React.Component {
     }
 
     displayRestaurants = async () => {
+
+
         try {
-            // let url = `${process.env.REACT_APP_SERVER}/restaurants?searchQuery=${this.state.name}`;
-            let url = `http://localhost:3001/restaurants?searchQuery=${this.state.name}`;
+            if (this.props.auth0.isAuthenticated) {
+                const res = await this.props.auth0.getIdTokenClaims()
+                const jwt = res.__raw;
+                const config = {
+                  headers: { "Authorization": `Bearer ${jwt}` },
+                }
+            let url = `${process.env.REACT_APP_SERVER}/restaurants?searchQuery=${this.state.name}`;
+            // let url = `http://localhost:3001/restaurants?searchQuery=${this.state.name}`;
             console.log(url);
-            let restaurantsResponse = await axios.get(url);
+            let restaurantsResponse = await axios.get(url, config);
             console.log(restaurantsResponse.data);
             this.setState({
                 displayInfo: true,
                 restaurantData: restaurantsResponse.data,
-            })
+            })}
         } catch (error) {
             this.setState({
                 errorModal: true,
@@ -77,20 +94,21 @@ class Home extends React.Component {
 
     postPlaces = async (newPlaces) => {
         try {
-            //   if (this.props.auth0.isAuthenticated) {
-            //     const res = await this.props.auth0.getIdTokenClaims()
-            //     const jwt = res.__raw;
-            //     const config = {
-            //       headers: { “Authorization”: `Bearer ${jwt}` },
-            //     }
+            if (this.props.auth0.isAuthenticated) {
+                const res = await this.props.auth0.getIdTokenClaims()
+                const jwt = res.__raw;
+                const config = {
+                    headers: { "Authorization": `Bearer ${jwt}`
+                },
+            }
             let url = `${process.env.REACT_APP_SERVER}/places`;
-            await axios.post(url, newPlaces)
-            // const response = await axios.post(url, newBook, config)
-            // this.setState({ places: [...this.state.places, response.data] })
-            //   }
+            // await axios.post(url, newPlaces)
+            const response = await axios.post(url, newPlaces, config)
+            this.setState({ places: [...this.state.places, response.data] })
         }
-        catch (err) { console.error(err) }
-    }
+        }
+    catch(err) { console.error(err) }
+}
 
     
 
@@ -115,13 +133,15 @@ class Home extends React.Component {
                 </Form>
 
                 {this.state.displayInfo &&
-                    <>
-                        <Attractions
+                <>
+
+                        {this.state.attractionData.length>0? <Attractions
                             attractionData={this.state.attractionData}
-                            postPlaces={this.postPlaces} />
-                        <Restaurants
+                            postPlaces={this.postPlaces} />:<p> Loading... </p>}
+                        {this.state.restaurantData.length>0?<Restaurants
+                        
                             restaurantData={this.state.restaurantData}
-                            postPlaces={this.postPlaces} />
+                            postPlaces={this.postPlaces} />:<p> Loading... </p>}
                     </>
                 }
 
@@ -141,4 +161,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default withAuth0(Home);

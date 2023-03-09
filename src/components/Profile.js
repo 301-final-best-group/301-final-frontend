@@ -3,6 +3,7 @@ import '../profile.css';
 import axios from 'axios';
 import { Card, Container, Row, Button } from "react-bootstrap";
 import UpdateModal from "./UpdateModal";
+import { withAuth0 } from '@auth0/auth0-react';
 
 class Profile extends React.Component {
 
@@ -14,35 +15,64 @@ class Profile extends React.Component {
             placeToUpdate: {}
         }
     }
+    // *** without auth0***
 
-    componentDidMount() {
-        this.getPlaces();
-    }
-
-
-    getPlaces = async () => {
-        let url = `${process.env.REACT_APP_SERVER}/places`;
+    // componentDidMount() {
+    //     this.getPlaces();
+    // }
+    // getPlaces = async () => {
+    //     let url = `${process.env.REACT_APP_SERVER}/places`;
+    //     try {
+    //         const response = await axios.get(url);
+    //         this.setState({ places: response.data });
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
+//*** with auth0 */
+    async componentDidMount() {
         try {
-            const response = await axios.get(url);
+          if (this.props.auth0.isAuthenticated) {
+            const res = await this.props.auth0.getIdTokenClaims()
+            const jwt = res.__raw;
+            const config = {
+              headers: { "Authorization": `Bearer ${jwt}` },
+              method: 'get',
+              url: `${process.env.REACT_APP_SERVER}/places`
+            }
+            const response = await axios(config)
             this.setState({ places: response.data });
-        } catch (err) {
-            console.log(err);
+          }
         }
-    }
+        catch (err) { console.error(err) }
+      }
+
 
     deletePlace = async (_id) => {
         try {
+            if (this.props.auth0.isAuthenticated) {
+                const res = await this.props.auth0.getIdTokenClaims()
+                const jwt = res.__raw;
+                const config = {
+                  headers: { "Authorization": `Bearer ${jwt}` },
+                }
             let url = `${process.env.REACT_APP_SERVER}/places/${_id}`;
-            await axios.delete(url);
+            await axios.delete(url, config);
             let updatedPlaces = this.state.places.filter(place => place._id !== _id);
             this.setState({ places: updatedPlaces });
-        }
+        }}
         catch (err) { console.error(err) }
     }
     putPlace = async (updatedPlace) => {
         try {
+            if (this.props.auth0.isAuthenticated) {
+                const res = await this.props.auth0.getIdTokenClaims()
+                const jwt = res.__raw;
+                const config = {
+                  headers: { "Authorization": `Bearer ${jwt}` },
+                }
             let url = `${process.env.REACT_APP_SERVER}/places/${updatedPlace._id}`;
-            await axios.put(url, updatedPlace);
+            await axios.put(url, updatedPlace, config);
             console.log(this.state.places)
             const newPlaces = []
             this.state.places.forEach(place => {
@@ -52,7 +82,7 @@ class Profile extends React.Component {
                 newPlaces.push(place)
             });
             this.setState({ places: newPlaces })
-        }
+        }}
         catch (err) { console.error(err); }
     }
 
@@ -119,16 +149,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
-  //<Carousel>
-  //   {this.state.places.map(place => (
-  //     <Carousel.Item key={place._id}>
-  //        <img className="placeImg" src={place.images[0]} />
-  //       <Carousel.Caption>
-  //             <h1>{place.name}</h1>
-  //             <p>{place.address}</p>
-  //              {/* <p>{place.description}</p> */}
-  //         </Carousel.Caption>
-  //     </Carousel.Item>
-  //  ))}
-  //</Carousel>
+export default withAuth0(Profile);
