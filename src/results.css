@@ -6,6 +6,7 @@
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -19,6 +20,7 @@
 
 .card .cardAddress {
     font-size: 10px;
+    
 }
 
 h2 {
@@ -34,8 +36,9 @@ h2 {
     margin: 1rem !important;
     overflow-x: scroll;
     overflow-y: hidden;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     max-width: 100vw;
+    text-align: center;
 }
 
 .cardRow {
@@ -47,8 +50,6 @@ h2 {
 .addButton {
     color: white !important;
     background-color: #5ca6eb !important;
-    /* box-shadow: 2px 2px #588ec1; */
-    /* border: 2px solid #5ca6eb !important; */
     border: none !important;
 }
 

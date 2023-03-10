@@ -18,4 +18,21 @@
 .navItem {
     margin-right: 3rem;
     font-family: 'Ubuntu';
+    font-size: 18px;
+}
+
+.loginButton {
+    color: white !important;
+    background-color: #4496de !important;
+    border: none !important;
+    border-radius: 20px;
+}
+
+.loginButton:hover {
+    background-color: #4075a7 !important;
+}
+
+.loginButton:active {
+    transform: translateY(2px);
+    box-shadow: 0px;
 }
